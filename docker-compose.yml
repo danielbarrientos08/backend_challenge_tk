@@ -1,0 +1,42 @@
+version: '3.7'
+
+services:
+  laravel-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: challenge_prod
+      MYSQL_USER: challenge_prod
+      MYSQL_PASSWORD: secret
+    ports:
+      - 33069:3306
+    volumes:
+      - ./database/schemas/:/var/lib/mysql
+    networks:
+      challenge_prod_net:
+        ipv4_address: 172.21.100.9
+
+  laravel-prod:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 8200:80
+    volumes:
+      - ./laravel:/var/www/
+      - ./laravel/public:/var/www/html  
+    networks:
+      challenge_prod_net:
+        ipv4_address: 172.21.100.10
+    depends_on:
+      - laravel-db
+volumes:
+  laravel:
+  database:
+networks:
+  challenge_prod_net:
+    driver: bridge
+    ipam: 
+      driver: default
+      config:
+        - subnet: 172.21.100.0/24             
