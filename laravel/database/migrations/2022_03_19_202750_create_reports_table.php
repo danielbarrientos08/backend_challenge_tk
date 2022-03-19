@@ -17,7 +17,7 @@ class CreateReportsTable extends Migration
             $table->id();
             $table->string('title', 100);
             $table->string('report_link', 100);
-            $table->timestamps();
+            $table->date('created_at');
         });
     }
 
