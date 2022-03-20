@@ -38,6 +38,6 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'birth_date' => 'datetime',
+        'birth_date' => 'date:Y-m-d',
     ];
 }
