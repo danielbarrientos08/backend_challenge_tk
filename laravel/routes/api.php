@@ -22,3 +22,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login',[AuthController::class,'login']);
 Route::post('/generate-report',[ReportController::class,'generateReport']);
+Route::get('/list-reports',[ReportController::class,'listReports']);
