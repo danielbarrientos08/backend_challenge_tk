@@ -6,9 +6,12 @@ namespace App\Exports;
 use App\Models\User;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\Exportable;
 
-class UsersReport implements FromCollection, WithHeadings
+class UsersReport implements FromCollection, WithHeadings,ShouldQueue
 {
+    use Exportable;
 
     /**
     * @return \Illuminate\Support\Collection

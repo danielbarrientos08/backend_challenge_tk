@@ -22,8 +22,10 @@ class ReportController extends Controller
         $report->report_link = $file_name;
         $report->save();
 
-        Excel::store(new UsersReport($request->start_date,$request->end_date), $file_name, 'public');
-
+        // Excel::store((new UsersReport($request->start_date,$request->end_date)), $file_name, 'public');
+        
+         (new UsersReport($request->start_date,$request->end_date))->store( $file_name, 'public');
+        
         return response()->json([
             'status'=>'success',
             'message' => 'El reporte se esta generando.'
