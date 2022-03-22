@@ -4,10 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Report extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
+
+    protected $casts = [
+        'created_at' => 'date:Y-m-d H:i:s',
+    ];
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y');
+    }
 }
