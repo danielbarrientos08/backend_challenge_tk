@@ -27,7 +27,7 @@ class ReportController extends Controller
 
         return response()->json([
             'status'=>'success',
-            'message' => 'El reporte se esta generando.'
+            'message' => 'El reporte se está generando.'
         ],201);
     }
 
@@ -59,7 +59,7 @@ class ReportController extends Controller
         {
             return response()->json([
                 'status'=>'success',
-                'message' => 'El reporte aún se esta procesando.'
+                'message' => 'El reporte aún se está procesando.'
             ],404);
         }
     }

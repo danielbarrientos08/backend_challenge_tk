@@ -12,12 +12,12 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        // dd($request->all());
+
         Validator::make($request->all(), [
             'email' => 'bail|required|email',
             'password' => 'required',
         ])->validate();
-        
+
         if(!Auth::attempt($request->only('email','password')))
         {
             return response()->json([
@@ -33,5 +33,5 @@ class AuthController extends Controller
             'api_token' => $token,
             'token_type' => 'Bearer'
         ],200);
-    }   
+    }
 }
