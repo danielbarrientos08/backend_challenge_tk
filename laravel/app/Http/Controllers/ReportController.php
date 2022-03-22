@@ -33,7 +33,7 @@ class ReportController extends Controller
 
     public function listReports()
     {
-        $reports = Report::get();
+        $reports = Report::oderBy('created_at','DESC')->get();
 
         return response()->json([
             'status'=>'success',
